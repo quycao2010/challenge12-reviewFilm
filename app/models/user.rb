@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  attr_accessor :name, :email
   has_many :movies 
   has_many :reviews, dependent: :destroy    
   validates :name,  presence: true
