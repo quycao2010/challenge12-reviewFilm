@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   get 'sessions/new'
 
-  resources :movies
+  resources :movies do
+    collection do 
+      get 'search'
+    end
+    resources :reviews
+  end
   root "movies#index"
   get "/signup", to: 'users#new'
   post "/signup", to: "users#create"

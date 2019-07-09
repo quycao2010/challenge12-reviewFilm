@@ -16,3 +16,6 @@
 //= require_tree .
 //= require bootstrap
 //= require popper
+setTimeout(() => {
+    document.getElementById('notice').innerHTML = '';
+}, 3000);

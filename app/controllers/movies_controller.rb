@@ -38,6 +38,15 @@ class MoviesController < ApplicationController
     end
   end
 
+  def search
+    if params[:search].present?
+      @movies = Movie.where("title LIKE ?", "%#{params[:search]}%")
+      render 'search'
+    else
+      redirect_to :back, notice: "Have to input title the title"
+    end 
+  end
+
   # PATCH/PUT /movies/1
   # PATCH/PUT /movies/1.json
   def update
