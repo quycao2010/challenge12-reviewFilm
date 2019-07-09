@@ -43,7 +43,7 @@ class MoviesController < ApplicationController
       @movies = Movie.where("title LIKE ?", "%#{params[:search]}%")
       render 'search'
     else
-      redirect_to :back, notice: "Have to input title the title"
+      redirect_to :back, notice: "Have to input the title"
     end 
   end
 
