@@ -4,17 +4,13 @@
   <ul class="navbar-nav mr-5">
      <% if logged_in? %>
           <li class="nav-item"><%= link_to "New Movie", new_movie_path, class: "nav-link" %></li>
-          <li class="nav-item"><%= link_to "Log out", logout_path,method: :delete, class: "nav-link" %></li>
-        <% else %>
+          <li class="nav-item"><%= link_to "Logout", logout_path, :method => :delete, class: "nav-link" %></li>
+      <% else %>
           <li class="nav-item"><%= link_to "Sign Up", signup_path, class: "nav-link" %></li>
           <li class="nav-item"><%= link_to "Sign In", login_path, class: "nav-link" %></li>
-    <% end %>
+      <% end %>
   </ul>
-  <%# <form class="form-inline ml-5">
-    <input class="form-control mr-sm-2" type="text" placeholder="Search">
-    <button class="btn btn-success" type="submit">Search</button>
-  </form> %>
-  <%= form_tag search_movies_path,method: :get,class: "form-inline ml-5",role: "search" do %>
+  <%= form_tag search_movies_path,method: :get, class: "form-inline ml-5",role: "search" do %>
     <%= text_field_tag :search, params[:search],class: "form-control mr-sm-2" %>
     <%= submit_tag "Search",class: "btn btn-success"  %>
   <% end %>

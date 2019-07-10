@@ -60,6 +60,10 @@
       </div>
     </div>
   </div>
-  <%= link_to 'Edit', edit_movie_path(@movie),class: "btn btn-primary" %> |
-  <%= link_to 'Back', movies_path, class: "btn btn-warning"%>
+  <% if @movie.user == current_user%>
+    <%= link_to 'Edit', edit_movie_path(@movie),class: "btn btn-primary" %> |
+    <%= link_to 'Back', movies_path, class: "btn btn-warning"%>
+  <% else %>
+    <%= link_to 'Back', movies_path, class: "btn btn-warning"%>
+  <% end %>
 </div>

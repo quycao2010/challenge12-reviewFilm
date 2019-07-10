@@ -19,10 +19,14 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update(user_params)
-      redirect_to @movie, notice: 'Movie was successfully updated.'
+    protected_params = Hash.new
+    user_params.each do |key,value|
+      protected_params[key.to_sym] = value unless value.nil?
+    end
+    if @user.update_attributes(protected_params)
+      redirect_to root_path, notice: 'Movie was successfully updated.'
     else
-      render 'new'
+      render 'edit'
     end
   end
 
